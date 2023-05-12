@@ -84,21 +84,51 @@ function displayMovies() {
 		bookButton.classList.add("btn-book");
 		bookButton.textContent = "Book Now";
 		bookButton.addEventListener("click", function() {
+			var est=false;
 			const date = dateInput.value;
+			if(date==""){
+				alert("Please enter a date");
+			};
 			const time = timeInput.value;
-		  
-			const ticket = `
-			  <p>Movie: ${movie.title}</p>
-			  <p>Date: ${date}</p>
-			  <p>Time: ${time}</p>
-			`;
-		  
-			const printWindow = window.open("", "PrintWindow", "width=400,height=400");
-			printWindow.document.write(ticket);
-			printWindow.document.close();
-			printWindow.focus();
-			printWindow.print();
-			printWindow.close();
+			if(time==""){
+				alert("Please enter a time");
+			};
+			if(date!="" && time!=""){
+				est=true;
+			};
+			if (est) {
+				var email = localStorage.getItem("varemail");
+				var ticket = `
+				  <div style="text-align: center; border: 10px solid yellow; padding: 20px;">
+					<h1 style="color: red">Profit's Movie Ticket Booking</h1>
+					<h2>Booked Ticket Details</h2>
+				  </div>
+				  <div>
+				   <h1>                                          
+				   </h1>
+				  </div>
+				  <div style="text-align: left; border: 5px solid red; padding: 20px;">
+					<h3 style="color: slateblue">Email: ${email}</h3>
+					<h3 style="color: slateblue">Movie: ${movie.title}</h3>
+					<h3 style="color: slateblue">Date: ${date}</h3>
+					<h3 style="color: slateblue">Time: ${time}</h3>
+				  </div>
+				  <div>
+				  <h1>
+				  </h1>
+				  </div>
+				  <div style="text-align: center; border: 5px solid #050578; padding: 20px;">
+				  	<h3 style="color: red; align: center;">Congrats! Discount Availed</h3>
+				  	<h2 style="color:#ff0073">Thank you for booking</h2>
+				  </div>
+				`;			  
+				const printWindow = window.open("", "PrintWindow", "width=800,height=800");
+				printWindow.document.write(ticket);
+				printWindow.document.close();
+				printWindow.focus();
+				printWindow.print();
+				printWindow.close();
+			  };			  
 		  });
 					
 		movieDiv.appendChild(bookButton);
