@@ -86,7 +86,7 @@ nav a:hover {
 
 .hero input[type="text"] {
 	padding: 10px;
-	border: none;
+	border: 5px solid yellow;
 	border-radius: 5px;
 }
 
@@ -136,6 +136,17 @@ nav a:hover {
 
 .movie-title {
 	margin-top: 20px;
+}
+
+.movie input[type="date"]{
+	padding: 10px;
+	border: 3px solid black;
+	border-radius: 5px;
+}
+.movie input[type="time"]{
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 5px;
 }
 
 .movie-info {
